@@ -2,82 +2,67 @@
  * A function that randomly return computer choice 
  * it assign the value to a value in the array choice
 */
-function getComputerChoice(){
-    let computerChoice;
-    const randomNum = Math.floor(Math.random()*3);
+let opt = ['rock', 'paper', 'scissor']
 
+function getComputerChoice(){
+   
+    let computerChoice;
+    const randomNum = Math.floor(Math.random()*opt.length);
+    let ans = randomNum;
+    console.log("the random num is ", ans)
     if (randomNum === 0){
-        computerChoice = "rock";
+        computerChoice = opt[0];
+        alert(computerChoice);
     }
     else if (randomNum=== 1){
-        computerChoice = "paper";
+        computerChoice = opt[1];
+        console.log(computerChoice);
     }
     else{
-        computerChoice = "scissor";
+        computerChoice = opt[2];
+        console.log(computerChoice);
     }
     return computerChoice;
-}
-document.write(getComputerChoice());
-
-
-
-/* 
-
-
- */
-/* let playerSelection = "scissor"
-
-if(playerSelection ==="rock" && computerChoice ==="scissor"){
-    document.write("player wins")
-}
-else if(playerSelection ==="scissor" && computerChoice ==="rock"){
-    document.write("<br/>", "computer wins")
-}
-
-
-else if(playerSelection ==="paper" && computerChoice ==="rock"){
-    document.write("players wins")
-}
-else if(playerSelection ==="rock" && computerChoice ==="paper"){
-    document.write("computer wins")
-}  
-
-
-else if(playerSelection ==="scissor" && computerChoice ==="paper"){
-    document.write("player Wins")
-}
-else if(playerSelection ==="paper" && computerChoice ==="scissor"){
-    document.write("computer Wins")
-}
- */
-/* f{
-    
-  
    
-    else if (randomNum == 1){
-        return "paper"
-    }
-    else{
-        return "scissor"
-    }
-    return computerChoice;
 }
-document.write(computerChoice)
- */
 
 /***
- *This function get the player choice
- * it compares the input length
- * it match the input 
- * it return the input if it matches the value in the array choice 
- */
-/* let playerSelection = "rock";
-
-if (playerSelection == getComputerChoice()){
-    document.write("You lose! Paper beats rock.");
-} */
-/**
  * This function plays a single round of the game 
  * it takes two parameter
  * return a string that declare the winner
+ * it compares the string input by user length
  */
+let playerSelection
+ function playRound(playerSelection, computerSelection){
+    let msg;
+    playerSelection = prompt("Rock, Paper. Scissor")
+    playerSelection = playerSelection.toLowerCase()
+
+    if(playerSelection === computerSelection){ //works
+        msg = "tie";
+    } 
+    
+    else if(playerSelection == "scissor" && computerSelection == "rock"){ //works
+        msg = "computer wins";
+    } 
+    else if(playerSelection == "rock" && computerSelection == "scissor"){ //works
+        msg = "player wins";
+    } 
+
+    else if(playerSelection == "rock" && computerSelection == "paper"){ //works
+        msg = "computer wins";
+    } 
+    else if(playerSelection == "paper" && computerSelection == "rock"){ //works
+        msg = "player wins";
+    } 
+
+    else if(playerSelection == "paper" && computerSelection == "scissor"){ //works
+        msg = "computer wins";
+    } 
+    else if(playerSelection == "scissor" && computerSelection == "paper"){ //works
+        msg = "player wins";
+    } 
+
+    return msg;
+}
+document.write(playRound(playerSelection, getComputerChoice()))
