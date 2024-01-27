@@ -6,6 +6,7 @@ let opt = ['rock', 'paper', 'scissor']
 let playerScore;
 let computerScore;
 let result = ['Player Win', 'Player Lost', 'Tie'];
+let winner;
 let msg;
 
 
@@ -76,13 +77,14 @@ document.write("<br/>",playRound(playerSelection, getComputerChoice()));
 function scores(){
     playerScore = 0;
     computerScore = 0;
+   
     if (msg === result[0]){
         playerScore ++;
-        console.log(playerScore)
+        
     }
     else if (msg === result[1]){
         computerScore ++;
-        console.log(computerScore)
+        
     }
     else{
         //alert(result[2]);
@@ -90,8 +92,22 @@ function scores(){
     return playerScore, computerScore;
 }
 scores();
+console.log(playerScore)
+console.log(computerScore)
 
-
+function getWinner(){
+    if(playerScore > computerScore){
+        winner = "Player";
+    }
+    else if (computerScore> playerScore){
+        winner = "Computer"
+    }
+    else{
+        winner = "tie"
+    }
+}
+getWinner();
+console.log(winner)
 
 /* function game(){
     let playerSelection
