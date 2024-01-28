@@ -62,6 +62,11 @@ function getComputerChoice(){
     return msg;
 }
 
+/**
+ * This function compares the msg with the result
+ * it increment the score of player
+ */
+
 function scores(){
     
     if (msg === result[0]){
@@ -70,12 +75,13 @@ function scores(){
     else if (msg === result[1]){
         computerScore ++;
     }
-    else{
-        //alert(result[2]);
-    }
+    
     return playerScore, computerScore;
 }
 
+/**
+ * This function compares the scores and display the winner
+ */
 
 function getWinner(){
     let winner;
@@ -87,21 +93,46 @@ function getWinner(){
         winner = "Oops! Computer wins"
     }
     else{
-        winner = "Execellence Game, we have a tie"
+        winner = "Execellence Game, we have a tie"   
     }
     return winner;
 }
 
 /** 
- * 
+ * This function runs if the user input a vaild input
+ * it store the computer choice
+ * it stores the result for each round
+ * and calls the scores and breaktie functions
  * */ 
+
 function gameProgress(){
     const computerSelection = getComputerChoice();
     roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult)
-   
+    console.log(roundResult);
+
+    /** this line of calls the breaktiw function
+     * if the is a tie when the game is being played
+     */
+    breakTie()
+
     scores();
 }
+
+/**
+ * This function breaks the tie when the game is playing 
+ * And also settle a draw 
+ */
+
+function breakTie(){
+    if (msg == result[2]){
+        alert("a tie")
+        playerSelection = prompt("Rock, Paper, Scissor");
+        const computerSelection = getComputerChoice();
+        roundResult = playRound(playerSelection, computerSelection);
+        console.log(roundResult)
+    }
+}
+
 
 function game(){
     let roundResult;
