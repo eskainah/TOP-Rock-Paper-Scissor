@@ -94,6 +94,7 @@ function getWinner(){
     }
     else{
         winner = "Execellence Game, we have a tie"   
+        
     }
     return winner;
 }
@@ -124,12 +125,14 @@ function gameProgress(){
  */
 
 function breakTie(){
-    if (msg == result[2]){
-        alert("a tie")
-        playerSelection = prompt("Rock, Paper, Scissor");
-        const computerSelection = getComputerChoice();
-        roundResult = playRound(playerSelection, computerSelection);
-        console.log(roundResult)
+    for(let i = 0; i < 5; i++){
+        if (msg == result[2]){
+            alert("a tie")
+            playerSelection = prompt("Rock, Paper, Scissor");
+            const computerSelection = getComputerChoice();
+            roundResult = playRound(playerSelection, computerSelection);
+            console.log(roundResult)
+        }
     }
 }
 
@@ -163,8 +166,5 @@ function game(){
     }
 }
 game(); 
-console.log(playerScore)
-/* document.write("<br/>", );
-document.write("<br/>", );
-*/
+
 document.write("The Computer Score is: ", computerScore, "<br/>", "The Player Score is: ", playerScore, "<br/>", getWinner());
