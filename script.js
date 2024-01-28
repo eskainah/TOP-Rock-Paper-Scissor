@@ -90,11 +90,10 @@ function getWinner(){
         winner = "Bravo player you won";
     }
     else if (computerScore> playerScore){
-        winner = "Oops! Computer wins"
+        winner = "Oops! Computer wins";
     }
     else{
-        winner = "Execellence Game, we have a tie"   
-        
+        winner = "Execellence Game, we have a tie";
     }
     return winner;
 }
@@ -114,7 +113,7 @@ function gameProgress(){
     /** this line of calls the breaktiw function
      * if the is a tie when the game is being played
      */
-    breakTie()
+    breakTie();
 
     scores();
 }
@@ -127,15 +126,14 @@ function gameProgress(){
 function breakTie(){
     for(let i = 0; i < 5; i++){
         if (msg == result[2]){
-            alert("a tie")
+            alert("a tie");
             playerSelection = prompt("Rock, Paper, Scissor");
             const computerSelection = getComputerChoice();
             roundResult = playRound(playerSelection, computerSelection);
-            console.log(roundResult)
+            console.log(roundResult);
         }
     }
 }
-
 
 function game(){
     let roundResult;
@@ -145,7 +143,7 @@ function game(){
 
     for(let i = 0; i < 5; i++){
         playerSelection = prompt("Rock, Paper, Scissor");
-        playerSelection = playerSelection.toLowerCase()
+        playerSelection = playerSelection.toLowerCase();
 
         if (playerSelection != opt[0]){
             if (playerSelection != opt[1]){
