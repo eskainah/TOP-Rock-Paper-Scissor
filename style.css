@@ -79,3 +79,22 @@ header{
     }
 }
 
+.game_display{
+    width: 100%;
+    padding: 10px;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.choice{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+.result{
+    background-color: green;
+    grid-column: 1/3;
+}
