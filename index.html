@@ -12,17 +12,16 @@
 <body>
     <div class="container">
         <header>
-            <img class="gameLogo" src="game-logo.png" alt="rock-paper-scissor">
             <div class="hero">
                 <h1>Rock Paper Scissor</h1>
                 <p>Become the master</p>
-            </div>
+            </div> 
         </header>
 
-        <section class="info">
+         <section class="info">
             <div class="player-info">
-                <p class="player">Player1: <span>Ed Saah</span></p>
-                <p class="score">Score: <span>100pts</span></p>
+                <p class="player">Ed Saah</p>
+                <p class="score">Score: <span>100 </span>pts</p>
             </div>
 
             <div class="roll-counter">
@@ -31,19 +30,16 @@
             </div>
 
             <div class="player-info">
-                <p class="player">Player2: <span>Ed Saah</span></p>
-                <p class="score">Score: <span></span></p>
+                <p class="player">Computer</p>
+                <p class="score">Score: <span>100 </span>pts</p>
             </div>
         </section>
 
         <section class="game_display">
             <div class="choice">
-                <p>Ed Saah</p>
-                <p>Rock</p>
-            </div>
-            <div class="choice">
-                <p>Computer</p>
-                <p>Rock</p>
+                <p>You choose <span></span></p>
+
+                <p>The Computer choose <span></span></p>
             </div>
             <div class="result">
                 <p>The winner for round one is: </p>
@@ -53,15 +49,14 @@
         <section class="userInput">
             <button class="btn">ROCK</button>
             <button class="btn">PAPER</button>
-            <button class="btn">SCISSOR</button>
+            <button class="btn" id="scissor">SCISSOR</button>
         </section>
 
         <section class="controls">
-            <button class="btn">NEW</button>
-            <button class="btn">RESTART</button>
-            <button class="btn">END</button>
+            <button class="btn" id="new">NEW</button>
+            <button class="btn" id="restart">RESTART</button>
+            <button class="btn" id="end">END</button>
         </section>
-    </div>
-    
+    </div>     
 </body>
 </html>
