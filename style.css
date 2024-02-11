@@ -34,7 +34,6 @@ body {
 }
 
 .hero{
-        padding: 20px;
         text-align: center;
         width: 100%;
         color: var(--text-color-light);
@@ -52,7 +51,7 @@ body {
  .info{
     display: grid;
     grid-template-columns: 1fr 1fr;
-
+    width: 70%;
     .player-info, .roll-counter{     
         text-align: center;
     }
@@ -116,8 +115,10 @@ body {
     }
     .btn{
         padding: 5px; 
+        margin: 0 5px;
+       
     }
     .userInput{
-        width: 70%;
+        width: 80%;
     }
 }
