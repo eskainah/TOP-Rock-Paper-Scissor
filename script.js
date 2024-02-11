@@ -1,13 +1,51 @@
 let opt = ['rock', 'paper', 'scissor']; // an array of options
 let result = ['Player Win', 'Player Lost', 'Tie']; // an array of result per round
 let playerSelection, msg;
+playerScore = 0;
+computerScore = 0;
+
 
 /**
+ * This function counts the rolls
+ */
+function counter(){
+    const count = document.querySelector('.counter');
+    const userInput = document.querySelectorAll('.input'); 
+    
+    let roll = 0;
+   
+    const handleButtonClick = function() {
+        if (roll < 5) {
+            roll++;
+            count.textContent = `${roll}`
+          }
+        else {
+            userInput.forEach(input => {
+            input.removeEventListener("click", handleButtonClick);
+            });
+        }
+    };
+          
+    userInput.forEach(input => {
+        input.addEventListener("click", handleButtonClick);
+    });        
+}
+counter()
+
+
+
+
+
+
+
+
+
+/** 
  * A function that randomly return computer choice 
  * it assign the value to a value in the array choice
 */
 function getComputerChoice(){
-   
+    
     let computerChoice;
     const randomNum = Math.floor(Math.random()*opt.length);
     
@@ -33,10 +71,13 @@ function getComputerChoice(){
  * it compares the string input by user length
  */
 
- function playRound(playerSelection, computerSelection){
+    
 
+ function playRound(playerSelection, computerSelection){
+    
     if(playerSelection === computerSelection){
         msg = result[2];
+        
     } 
     
     else if(playerSelection == opt[2] && computerSelection == opt[0]){
@@ -60,6 +101,7 @@ function getComputerChoice(){
         msg = result[0];
     } 
     return msg;
+    
 }
 
 /**
@@ -98,6 +140,7 @@ function getWinner(){
     return winner;
 }
 
+
 /** 
  * This function runs if the user input a vaild input
  * it store the computer choice
@@ -106,6 +149,7 @@ function getWinner(){
  * */ 
 
 function gameProgress(){
+
     const computerSelection = getComputerChoice();
     roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
@@ -113,9 +157,10 @@ function gameProgress(){
     /** this line of calls the breaktiw function
      * if the is a tie when the game is being played
      */
-    breakTie();
+   breakTie();
 
-    scores();
+   scores()
+
 }
 
 /**
@@ -124,26 +169,30 @@ function gameProgress(){
  */
 
 function breakTie(){
-    for(let i = 0; i < 5; i++){
+    removeEventListener("click", true)
         if (msg == result[2]){
             alert("a tie");
-            playerSelection = prompt("Rock, Paper, Scissor");
-            const computerSelection = getComputerChoice();
+            rock.addEventListener("click",() =>{
+                playerSelection = "rock";
+                gameProgress();})
+            /* const computerSelection = getComputerChoice();
             roundResult = playRound(playerSelection, computerSelection);
             console.log(roundResult);
-        }
+ */
     }
 }
 
-function game(){
+/* function game(){
     let roundResult;
+
+  
 
     playerScore = 0;
     computerScore = 0;
 
     for(let i = 0; i < 5; i++){
         playerSelection = prompt("Rock, Paper, Scissor");
-        playerSelection = playerSelection.toLowerCase();
+        playerSelection = playerSelection.toLowerCase(); 
 
         if (playerSelection != opt[0]){
             if (playerSelection != opt[1]){
@@ -163,6 +212,6 @@ function game(){
         }
     }
 }
-game(); 
-
-document.write("The Computer Score is: ", computerScore, "<br/>", "The Player Score is: ", playerScore, "<br/>", getWinner());
+game();  */
+//console.log(getWinner())
+//document.write("The Computer Score is: ", computerScore, "<br/>", "The Player Score is: ", playerScore, "<br/>", getWinner());
