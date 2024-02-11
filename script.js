@@ -1,7 +1,6 @@
 let result = ['Player Win', 'Player Lost', 'Tie']; // an array of result per round
 let opt = ['rock', 'paper', 'scissor']; // an array of options
 
-
 let playerChoice = document.querySelector('.playerChoice');
 let computerChoice = document.querySelector('.computerChoice');
 const cScore = document.querySelector('#computerScore');
