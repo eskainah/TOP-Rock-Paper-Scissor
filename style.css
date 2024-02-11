@@ -47,7 +47,14 @@ body {
             margin: 0;
         }
 }
-
+.instruction{
+    background-color:#52613b79;
+    font-size: .9rem;
+    color: rgba(12, 10, 10, 0.938);
+    p{
+        padding: 0 10PX;
+    }
+}
  .info{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -66,11 +73,10 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: 30%;
+    height: 27%;
     background-color: #0e1406e5;
     .choice{
         color: var(--text-color-light);
-        padding: 10px;
     }
 }
 
@@ -107,8 +113,9 @@ body {
         padding: 0px;
     }
     .game_display{
-        height: 40%;
+        height: 30%;
         width: 70%;
+        font-size: 1rem;
         .choice{
             padding: 5px;
         }
