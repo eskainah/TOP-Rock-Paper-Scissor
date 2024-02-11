@@ -4,6 +4,9 @@ let playerSelection, msg;
 playerScore = 0;
 computerScore = 0;
 
+playerChoice = document.querySelector('.playerChoice')
+computerChoice = document.querySelector('.computerChoice')
+
 
 /**
  * This function counts the rolls
@@ -12,7 +15,7 @@ function counter(){
     const count = document.querySelector('.counter');
     const userInput = document.querySelectorAll('.input'); 
     
-    let roll = 0;
+    let roll = 1;
    
     const handleButtonClick = function() {
         if (roll < 5) {
@@ -21,8 +24,8 @@ function counter(){
           }
         else {
             userInput.forEach(input => {
-            input.removeEventListener("click", handleButtonClick);
-            });
+                input.disabled = true;
+        });
         }
     };
           
@@ -32,15 +35,30 @@ function counter(){
 }
 counter()
 
-
-    const rock = document.querySelector('#rock'); 
+//add click event to each buttons of he user input
+    const rock = document.querySelector('#btnrock'); 
         rock.addEventListener("click",() =>{
         playerSelection = "rock";
         gameProgress();
-        
+        playerChoice.textContent = "You choose ROCK"
+        console.log(getWinner())
+    } ); 
+
+    const paper = document.querySelector('#btnpaper'); 
+        paper.addEventListener("click",() =>{
+        playerSelection = "paper";
+        gameProgress();
+        playerChoice.textContent = "You choose Paper"
         console.log(getWinner())
     } ); 
   
+    const scissor = document.querySelector('#btnscissor'); 
+    scissor.addEventListener("click",() =>{
+    playerSelection = "scissor";
+    gameProgress();
+    playerChoice.textContent = "You choose Scissor"
+    console.log(getWinner())
+} ); 
 
 
     /* function tie(){
@@ -61,22 +79,15 @@ counter()
 */
 function getComputerChoice(){
     
-    let computerChoice;
+    let choice;
     const randomNum = Math.floor(Math.random()*opt.length);
     
-    if (randomNum === 0){
-        computerChoice = opt[0];
-        console.log("the random num is ", computerChoice )
-    }
-    else if (randomNum=== 1){
-        computerChoice = opt[1];
-        console.log("the random num is ", computerChoice )
-    }
-    else{
-        computerChoice = opt[2];
-        console.log("The random num is ", computerChoice);
-    }
-    return computerChoice; 
+    if (randomNum === 0){choice = opt[0]}
+    else if (randomNum=== 1){choice = opt[1]}
+    else{choice = opt[2]}
+    
+    computerChoice.textContent = `The Computer choose ${choice}`
+    return choice; 
 }
 
 /***
