@@ -1,71 +1,37 @@
 let opt = ['rock', 'paper', 'scissor']; // an array of options
 let result = ['Player Win', 'Player Lost', 'Tie']; // an array of result per round
 let playerSelection, msg;
-playerScore = 0;
-computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-playerChoice = document.querySelector('.playerChoice')
-computerChoice = document.querySelector('.computerChoice')
-
-
-/**
- * This function counts the rolls
- */
-function counter(){
-    const count = document.querySelector('.counter');
-    const userInput = document.querySelectorAll('.input'); 
-    
-    let roll = 1;
-   
-    const handleButtonClick = function() {
-        if (roll < 5) {
-            roll++;
-            count.textContent = `${roll}`
-          }
-        else {
-            userInput.forEach(input => {
-                input.disabled = true;
-        });
-        }
-    };
-          
-    userInput.forEach(input => {
-        input.addEventListener("click", handleButtonClick);
-    });        
-}
-counter()
+let playerChoice = document.querySelector('.playerChoice')
+let computerChoice = document.querySelector('.computerChoice')
+let winner = document.querySelector('.result')
+const pScore = document.querySelector('#playerScore');
+const cScore = document.querySelector('#computerScore');
+const userInput = document.querySelectorAll('.input');
 
 //add click event to each buttons of he user input
-    const rock = document.querySelector('#btnrock'); 
-        rock.addEventListener("click",() =>{
+const rock = document.querySelector('#btnrock'); 
+rock.addEventListener("click",() =>{
         playerSelection = "rock";
         gameProgress();
         playerChoice.textContent = "You choose ROCK"
-        console.log(getWinner())
-    }); 
+}); 
 
-    const paper = document.querySelector('#btnpaper'); 
-        paper.addEventListener("click",() =>{
+const paper = document.querySelector('#btnpaper'); 
+paper.addEventListener("click",() =>{
         playerSelection = "paper";
         gameProgress();
         playerChoice.textContent = "You choose Paper"
-        console.log(getWinner())
-    }); 
+}); 
   
-    const scissor = document.querySelector('#btnscissor'); 
-    scissor.addEventListener("click",() =>{
+const scissor = document.querySelector('#btnscissor'); 
+scissor.addEventListener("click",() =>{
     playerSelection = "scissor";
     gameProgress();
     playerChoice.textContent = "You choose Scissor"
-    console.log(getWinner())
-    }); 
-
-
-    /* function tie(){
-        rock.addEventListener("click",() =>{
-            playerSelection = "rock";
-        });
-    } */
+}); 
 
 /** 
  * A function that randomly return computer choice 
@@ -91,13 +57,11 @@ function getComputerChoice(){
  * it compares the string input by user length
  */
 
-    
-
  function playRound(playerSelection, computerSelection){
     
     if(playerSelection === computerSelection){
-        msg = result[2];
-        
+        msg = result[2]; 
+        winner.textContent = "This is a tie"
     } 
     
     else if(playerSelection == opt[2] && computerSelection == opt[0]){
@@ -130,8 +94,7 @@ function getComputerChoice(){
  */
 
 function scores(){
-    const pScore = document.querySelector('#playerScore');
-    const cScore = document.querySelector('#computerScore');
+    
     if (msg === result[0]){
         playerScore ++; 
         pScore.textContent = playerScore
@@ -141,29 +104,22 @@ function scores(){
         cScore.textContent = computerScore
     }
     console.log(playerScore, computerScore)
-    return playerScore, computerScore;
+
+    function getWinner(){
+        if(playerScore == 5){
+            winner.textContent = "Bravo player you won";
+            userInput.forEach(input => {input.disabled = true})
+        }
+        else if (computerScore> playerScore){
+            winner.textContent = "Oops! Computer wins";
+        }
+        else{
+            winner.textContent = "Execellence Game, we have a tie";
+        }
+        return winner;
+    }
+    return getWinner()
 }
-
-/**
- * This function compares the scores and display the winner
- */
-
-function getWinner(){
-    let winner;
-
-    if(playerScore > computerScore){
-        winner = "Bravo player you won";
-    }
-    else if (computerScore> playerScore){
-        winner = "Oops! Computer wins";
-    }
-    else{
-        winner = "Execellence Game, we have a tie";
-    }
-    return winner;
-}
-
-
 /** 
  * This function runs if the user input a vaild input
  * it store the computer choice
@@ -177,13 +133,11 @@ function gameProgress(){
     roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
 
-    /** this line of calls the breaktiw function
+    /** this line of calls the break tie function
      * if the is a tie when the game is being played
      */
-  // breakTie();
-
+    
    scores()
-
 }
 
 /**
@@ -192,19 +146,18 @@ function gameProgress(){
  */
 
 function breakTie(){
-    removeEventListener("click", true)
+    
         if (msg == result[2]){
             alert("a tie");
-            rock.addEventListener("click",() =>{
-                playerSelection = "rock";
-                gameProgress();})
-            /* const computerSelection = getComputerChoice();
+            const computerSelection = getComputerChoice();
             roundResult = playRound(playerSelection, computerSelection);
             console.log(roundResult);
- */
     }
 }
 
+/**
+ * Use this when running the game in console
+ */
 /* function game(){
     let roundResult;
 
@@ -236,5 +189,3 @@ function breakTie(){
     }
 }
 game();  */
-//console.log(getWinner())
-//document.write("The Computer Score is: ", computerScore, "<br/>", "The Player Score is: ", playerScore, "<br/>", getWinner());
