@@ -6,12 +6,16 @@ let computerChoice = document.querySelector('.computerChoice');
 const cScore = document.querySelector('#computerScore');
 const pScore = document.querySelector('#playerScore');
 const userInput = document.querySelectorAll('.input');
+const btnRestart = document.querySelector('#restart');
 let winner = document.querySelector('.result');
 let tie = document.querySelector('.tie')
 let playerSelection, msg;
 let computerScore = 0;
 let playerScore = 0;
 
+btnRestart.addEventListener("click", () =>{
+    location.reload();
+})
 //add click event to each buttons of the user input and calls the gameProgress function
 const rock = document.querySelector('#btnrock'); 
 rock.addEventListener("click",() =>{
@@ -80,7 +84,6 @@ function scores(){
         computerScore ++;
         cScore.textContent = computerScore
     }
-    console.log(playerScore, computerScore)
 
     function getWinner(){
         if(playerScore == 5){
@@ -104,7 +107,6 @@ function gameProgress(){
 
     const computerSelection = getComputerChoice();
     roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult);
     
     scores()
 
