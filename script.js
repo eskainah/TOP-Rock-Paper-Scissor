@@ -42,7 +42,7 @@ counter()
         gameProgress();
         playerChoice.textContent = "You choose ROCK"
         console.log(getWinner())
-    } ); 
+    }); 
 
     const paper = document.querySelector('#btnpaper'); 
         paper.addEventListener("click",() =>{
@@ -50,7 +50,7 @@ counter()
         gameProgress();
         playerChoice.textContent = "You choose Paper"
         console.log(getWinner())
-    } ); 
+    }); 
   
     const scissor = document.querySelector('#btnscissor'); 
     scissor.addEventListener("click",() =>{
@@ -58,7 +58,7 @@ counter()
     gameProgress();
     playerChoice.textContent = "You choose Scissor"
     console.log(getWinner())
-} ); 
+    }); 
 
 
     /* function tie(){
@@ -66,12 +66,6 @@ counter()
             playerSelection = "rock";
         });
     } */
-
-
-
-
-
-
 
 /** 
  * A function that randomly return computer choice 
@@ -136,14 +130,17 @@ function getComputerChoice(){
  */
 
 function scores(){
-    
+    const pScore = document.querySelector('#playerScore');
+    const cScore = document.querySelector('#computerScore');
     if (msg === result[0]){
         playerScore ++; 
+        pScore.textContent = playerScore
     }
     else if (msg === result[1]){
         computerScore ++;
+        cScore.textContent = computerScore
     }
-    
+    console.log(playerScore, computerScore)
     return playerScore, computerScore;
 }
 
