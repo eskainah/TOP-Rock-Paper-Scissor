@@ -26,12 +26,14 @@ body {
 .container{
     background-color: var(--secondary-color);
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     margin: 0 auto;
     width: 90%;
 }
 
-    .hero{
+.hero{
         padding: 20px;
         text-align: center;
         width: 100%;
@@ -45,11 +47,11 @@ body {
             font-weight: bold;
             margin: 0;
         }
-    }
+}
 
  .info{
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
 
     .player-info, .roll-counter{     
         text-align: center;
@@ -61,13 +63,15 @@ body {
 }
 
 .game_display{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     text-align: center;
-
+    height: 30%;
+    background-color: #0e1406e5;
     .choice{
         color: var(--text-color-light);
+        padding: 10px;
     }
 }
 
@@ -79,36 +83,41 @@ body {
     border-radius: 3px;
     border: none;
 }
-.userInput, .controls{
+.userInput{
+    width: 90%;
     padding: 15px;
     display: flex;
     justify-content: space-around;
 }
 
-.controls{
-    #end{
-        background-color: rgb(252, 7, 7);
-        color: var(--text-color-light);
-    }
-    #restart, #new{
-        background-color: rgb(1, 31, 1);
-        color: var(--text-color-light);
-    }
+#restart{
+    width: 50%;
+    background-color: rgb(1, 31, 1);
+    color: var(--text-color-light);
+    margin: 0 auto;
 }
 
 @media (min-width: 600px) {
-    
-    
+    .container{
+        width: 50%;
+    }
+    .info{
+        width: 70%;
+    }
+    .hero{
+        padding: 0px;
+    }
     .game_display{
-        padding: 5px;
+        height: 40%;
+        width: 70%;
+        .choice{
+            padding: 5px;
+        }
     }
     .btn{
-        padding: 0; 
+        padding: 5px; 
     }
-    .userInput, .controls{
-        width: 60%;
-        justify-content: space-evenly;
-        margin: 0 auto;
-        padding: 10px;
+    .userInput{
+        width: 70%;
     }
 }
