@@ -86,6 +86,7 @@ function scores(){
     }
 
     function getWinner(){
+      
         if(playerScore == 5){
             winner.textContent = "Bravo player you won";
             userInput.forEach(input => {input.disabled = true})
