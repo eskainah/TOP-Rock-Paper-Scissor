@@ -33,6 +33,21 @@ function counter(){
 counter()
 
 
+    const rock = document.querySelector('#rock'); 
+        rock.addEventListener("click",() =>{
+        playerSelection = "rock";
+        gameProgress();
+        
+        console.log(getWinner())
+    } ); 
+  
+
+
+    /* function tie(){
+        rock.addEventListener("click",() =>{
+            playerSelection = "rock";
+        });
+    } */
 
 
 
@@ -157,7 +172,7 @@ function gameProgress(){
     /** this line of calls the breaktiw function
      * if the is a tie when the game is being played
      */
-   breakTie();
+  // breakTie();
 
    scores()
 
