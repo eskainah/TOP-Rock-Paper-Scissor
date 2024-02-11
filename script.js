@@ -1,17 +1,19 @@
-let opt = ['rock', 'paper', 'scissor']; // an array of options
 let result = ['Player Win', 'Player Lost', 'Tie']; // an array of result per round
-let playerSelection, msg;
-let playerScore = 0;
-let computerScore = 0;
+let opt = ['rock', 'paper', 'scissor']; // an array of options
 
-let playerChoice = document.querySelector('.playerChoice')
-let computerChoice = document.querySelector('.computerChoice')
-let winner = document.querySelector('.result')
-const pScore = document.querySelector('#playerScore');
+
+let playerChoice = document.querySelector('.playerChoice');
+let computerChoice = document.querySelector('.computerChoice');
 const cScore = document.querySelector('#computerScore');
+const pScore = document.querySelector('#playerScore');
 const userInput = document.querySelectorAll('.input');
+let winner = document.querySelector('.result');
+let tie = document.querySelector('.tie')
+let playerSelection, msg;
+let computerScore = 0;
+let playerScore = 0;
 
-//add click event to each buttons of he user input
+//add click event to each buttons of the user input and calls the gameProgress function
 const rock = document.querySelector('#btnrock'); 
 rock.addEventListener("click",() =>{
         playerSelection = "rock";
@@ -38,7 +40,7 @@ scissor.addEventListener("click",() =>{
  * it assign the value to a value in the array choice
 */
 function getComputerChoice(){
-    
+
     let choice;
     const randomNum = Math.floor(Math.random()*opt.length);
     
@@ -54,45 +56,21 @@ function getComputerChoice(){
  * This function plays a single round of the game 
  * it takes two parameter
  * return a string that declare the winner
- * it compares the string input by user length
  */
 
  function playRound(playerSelection, computerSelection){
     
-    if(playerSelection === computerSelection){
-        msg = result[2]; 
-        winner.textContent = "This is a tie"
-    } 
-    
-    else if(playerSelection == opt[2] && computerSelection == opt[0]){
-        msg = result[1]; 
-    } 
-    else if(playerSelection == opt[0] && computerSelection == opt[2]){
-        msg = result[0];
-    } 
-
-    else if(playerSelection == opt[0] && computerSelection == opt[1]){
-        msg = result[1];
-    } 
-    else if(playerSelection == opt[1] && computerSelection == opt[0]){
-        msg = result[0];
-    } 
-
-    else if(playerSelection == opt[1] && computerSelection == opt[2]){
-        msg = result[1];
-    } 
-    else if(playerSelection == opt[2] && computerSelection == opt[1]){ 
-        msg = result[0];
-    } 
+    if(playerSelection === computerSelection){msg = result[2]} 
+    else if(playerSelection == opt[2] && computerSelection == opt[0]){msg = result[1]} 
+    else if(playerSelection == opt[0] && computerSelection == opt[2]){msg = result[0]} 
+    else if(playerSelection == opt[0] && computerSelection == opt[1]){msg = result[1]} 
+    else if(playerSelection == opt[1] && computerSelection == opt[0]){msg = result[0]} 
+    else if(playerSelection == opt[1] && computerSelection == opt[2]){msg = result[1]} 
+    else if(playerSelection == opt[2] && computerSelection == opt[1]){msg = result[0]} 
     return msg;
-    
 }
 
-/**
- * This function compares the msg with the result
- * it increment the score of player
- */
-
+//This function compares the msg with the result & it increment the score of player
 function scores(){
     
     if (msg === result[0]){
@@ -110,54 +88,35 @@ function scores(){
             winner.textContent = "Bravo player you won";
             userInput.forEach(input => {input.disabled = true})
         }
-        else if (computerScore> playerScore){
+        else if (computerScore == 5){
             winner.textContent = "Oops! Computer wins";
+            userInput.forEach(input => {input.disabled = true})
         }
         else{
-            winner.textContent = "Execellence Game, we have a tie";
+            winner.textContent = "Keep going";
         }
         return winner;
     }
     return getWinner()
 }
-/** 
- * This function runs if the user input a vaild input
- * it store the computer choice
- * it stores the result for each round
- * and calls the scores and breaktie functions
- * */ 
 
+//This function stores the result for each round and calls the scores function
 function gameProgress(){
 
     const computerSelection = getComputerChoice();
     roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult);
-
-    /** this line of calls the break tie function
-     * if the is a tie when the game is being played
-     */
     
-   scores()
+    scores()
+
+    if (msg == result[2]) {
+        tie.textContent = "We have a tie";
+      } else {
+        tie.textContent = "";
+      }
 }
 
-/**
- * This function breaks the tie when the game is playing 
- * And also settle a draw 
- */
-
-function breakTie(){
-    
-        if (msg == result[2]){
-            alert("a tie");
-            const computerSelection = getComputerChoice();
-            roundResult = playRound(playerSelection, computerSelection);
-            console.log(roundResult);
-    }
-}
-
-/**
- * Use this when running the game in console
- */
+//Use this when running the game in console
 /* function game(){
     let roundResult;
 
